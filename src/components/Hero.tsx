@@ -6,6 +6,7 @@ import { MapPin, Search } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 
 const filterCategories = ['PG/Hostel', '1 BHK', '2 BHK', 'Flat/Roommate'];
 
@@ -33,17 +34,17 @@ export default function Hero() {
       )}
       <div className="absolute inset-0 bg-gradient-to-br from-[rgba(0,20,40,0.85)] to-[rgba(0,86,179,0.6)]" />
       <div className="relative z-10 container mx-auto px-4 py-20 text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl font-headline">
+        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl font-headline animate-slide-in-down">
           Find verified PGs, 1 & 2 BHKs.
         </h1>
-        <h2 className="mt-4 text-3xl font-bold text-accent drop-shadow-lg sm:text-4xl">
+        <h2 className="mt-4 text-3xl font-bold text-accent drop-shadow-lg sm:text-4xl animate-slide-in-up">
           Zero Brokerage.
         </h2>
-        <p className="mx-auto mt-6 max-w-3xl text-lg text-blue-100/90 sm:text-xl">
+        <p className="mx-auto mt-6 max-w-3xl text-lg text-blue-100/90 sm:text-xl animate-fade-in-up" style={{animationDelay: '0.2s'}}>
           No fake. No spam. No Brokers. Just real homes.
         </p>
         
-        <div className="mt-10 mx-auto max-w-2xl">
+        <div className="mt-10 mx-auto max-w-2xl animate-fade-in-up" style={{animationDelay: '0.4s'}}>
           <div className="group flex items-center gap-2 rounded-full bg-white p-2 shadow-2xl transition-all duration-300 focus-within:scale-[1.02] focus-within:shadow-primary/30">
             <MapPin className="ml-3 h-6 w-6 shrink-0 text-primary" />
             <Input
@@ -55,24 +56,28 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          {filterCategories.map((category) => (
-            <Button
-              key={category}
-              onClick={() => handleFilterClick(category)}
-              className={`rounded-full px-4 py-2 font-semibold transition-all duration-300 ${
-                activeCategory === category
-                  ? 'bg-accent text-white border-2 border-primary hover:bg-primary hover:border-accent'
-                  : 'bg-gray-200 text-primary border-2 border-transparent hover:bg-gray-200 hover:text-accent hover:border-accent'
-              }`}
-              variant={'outline'}
-            >
-              {category}
-            </Button>
-          ))}
+        <div className="mt-8 flex flex-wrap justify-center gap-3 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
+          {filterCategories.map((category) => {
+            const isActive = activeCategory === category;
+            return (
+              <Button
+                key={category}
+                onClick={() => handleFilterClick(category)}
+                className={cn(
+                  'rounded-full px-4 py-2 font-semibold transition-all duration-300 border-2',
+                  isActive
+                    ? 'bg-green-600 text-white border-blue-500 hover:bg-blue-600 hover:border-green-500'
+                    : 'bg-gray-200 text-blue-600 border-transparent hover:bg-gray-300 hover:text-green-600 hover:border-green-500'
+                )}
+                variant={'outline'}
+              >
+                {category}
+              </Button>
+            );
+          })}
         </div>
 
-        <div className="mt-12">
+        <div className="mt-12 animate-fade-in-up" style={{animationDelay: '0.8s'}}>
             <Button size="lg" className={`h-14 rounded-full px-8 text-lg font-bold ${gradientButtonClasses}`}>
                 <Search className="mr-2 h-5 w-5" /> Search Homes
             </Button>
