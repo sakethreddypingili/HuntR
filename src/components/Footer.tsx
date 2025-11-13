@@ -19,7 +19,7 @@ const footerSections = [
     title: 'Support',
     links: [
       { label: 'FAQs', href: '/faqs' },
-      { label: 'Contact Us', href: '#' },
+      { label: 'Contact Us', href: '/contact-us' },
       { label: 'Sitemap', href: '/sitemap' },
     ],
   },
