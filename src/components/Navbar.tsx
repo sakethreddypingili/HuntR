@@ -23,7 +23,7 @@ export default function Navbar() {
     'bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-lg shadow-accent/30 transition-all duration-300 hover:from-accent hover:to-primary hover:shadow-primary/40 hover:-translate-y-0.5';
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-gray-500 shadow-md">
+    <nav className="sticky top-0 z-50 w-full bg-black shadow-md">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link 
           href="/" 
@@ -43,10 +43,10 @@ export default function Navbar() {
                 variant="ghost"
                 asChild
                 className={cn(
-                  'rounded-full px-4 font-semibold transition-all duration-300 border-2',
+                  'rounded-full px-4 font-semibold transition-all duration-300',
                   isActive
-                    ? 'bg-accent text-white border-accent hover:bg-primary hover:border-primary hover:shadow-lg hover:shadow-primary/50'
-                    : 'bg-black text-primary border-primary hover:bg-gray-700 hover:text-accent hover:border-accent'
+                    ? 'bg-accent text-white hover:bg-primary'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                 )}
               >
                 <Link href={link.href}>{link.label}</Link>
@@ -88,10 +88,8 @@ export default function Navbar() {
                   asChild
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
-                    'w-full text-center text-lg py-6 rounded-lg font-semibold transition-all duration-300 border-2',
-                    isActive 
-                      ? 'bg-accent text-white border-accent' 
-                      : 'bg-black text-primary border-primary'
+                    'w-full text-center text-lg py-6 rounded-lg font-semibold transition-all duration-300',
+                    isActive ? 'bg-accent text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                   )}
                 >
                   <Link href={link.href}>{link.label}</Link>
