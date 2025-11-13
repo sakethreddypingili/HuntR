@@ -13,42 +13,10 @@ export default function SignupPage() {
   return (
     <>
       <Navbar />
-      <main className="flex items-center justify-center min-h-[calc(100vh-5rem)] bg-primary/5 px-4 animate-fade-in py-12 md:py-0">
+      <main className="flex items-center justify-center min-h-[calc(100vh-5rem)] bg-primary/5 px-4 animate-fade-in py-12">
          <div className="w-full max-w-4xl grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <Card className="w-full shadow-2xl shadow-primary/10 animate-fade-in-up md:order-2">
-              <CardHeader className="text-center">
-                <CardTitle className="text-3xl font-bold font-headline text-primary">Create Your Account</CardTitle>
-                <CardDescription>Join HuntR to find your brokerage-free home today.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Full Name</Label>
-                  <Input id="name" type="text" placeholder="John Doe" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="you@example.com" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="password">Password</Label>
-                  <Input id="password" type="password" required />
-                </div>
-              </CardContent>
-              <CardFooter className="flex flex-col gap-4">
-                <Button className={gradientButtonClasses}>Create Account</Button>
-                <div className="text-center text-sm text-muted-foreground">
-                  Already have an account?{' '}
-                  <Link href="/login" className="underline text-primary font-semibold hover:text-accent">
-                    Login
-                  </Link>
-                </div>
-              </CardFooter>
-            </Card>
-             <div className="space-y-6 animate-slide-in-right md:order-1">
-                <div className="md:hidden text-center">
-                    <h2 className="text-3xl font-bold text-primary font-headline">A Better Way to Rent is Here</h2>
-                </div>
-                <div className="hidden md:block">
+             <div className="space-y-6 animate-slide-in-right order-2 md:order-1">
+                <div className="text-center md:text-left">
                   <h2 className="text-3xl font-bold text-primary font-headline">A Better Way to Rent is Here</h2>
                   <p className="text-muted-foreground text-lg mt-2">
                       Tired of endless fees and fake listings? So were we. That's why we built HuntR.
@@ -78,6 +46,35 @@ export default function SignupPage() {
                     </li>
                 </ul>
             </div>
+             <Card className="w-full shadow-2xl shadow-primary/10 animate-fade-in-up order-1 md:order-2">
+              <CardHeader className="text-center">
+                <CardTitle className="text-3xl font-bold font-headline text-primary">Create Your Account</CardTitle>
+                <CardDescription>Join HuntR to find your brokerage-free home today.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Full Name</Label>
+                  <Input id="name" type="text" placeholder="John Doe" required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input id="email" type="email" placeholder="you@example.com" required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="password">Password</Label>
+                  <Input id="password" type="password" required />
+                </div>
+              </CardContent>
+              <CardFooter className="flex flex-col gap-4">
+                <Button className={gradientButtonClasses}>Create Account</Button>
+                <div className="text-center text-sm text-muted-foreground">
+                  Already have an account?{' '}
+                  <Link href="/login" className="underline text-primary font-semibold hover:text-accent">
+                    Login
+                  </Link>
+                </div>
+              </CardFooter>
+            </Card>
         </div>
       </main>
     </>

@@ -13,13 +13,10 @@ export default function OwnerLoginPage() {
   return (
     <>
       <Navbar />
-      <main className="flex items-center justify-center min-h-[calc(100vh-5rem)] bg-primary/5 px-4 animate-fade-in py-12 md:py-0">
+      <main className="flex items-center justify-center min-h-[calc(100vh-5rem)] bg-primary/5 px-4 animate-fade-in py-12">
         <div className="w-full max-w-4xl grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div className="space-y-6 animate-slide-in-left">
-                <div className="md:hidden text-center">
-                  <h2 className="text-3xl font-bold text-primary font-headline">Welcome Back, Partner!</h2>
-                </div>
-                <div className="hidden md:block">
+            <div className="space-y-6 animate-slide-in-left order-2 md:order-1">
+                <div className="text-center md:text-left">
                   <h2 className="text-3xl font-bold text-primary font-headline">Welcome Back, Partner!</h2>
                   <p className="text-muted-foreground text-lg mt-2">
                       Log in to manage your listings, view tenant applications, and connect with potential renters. Your next great tenant is just a click away.
@@ -49,7 +46,7 @@ export default function OwnerLoginPage() {
                     </li>
                 </ul>
             </div>
-            <Card className="w-full shadow-2xl shadow-primary/10 animate-fade-in-up">
+            <Card className="w-full shadow-2xl shadow-primary/10 animate-fade-in-up order-1 md:order-2">
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl font-bold font-headline text-primary">Owner Login</CardTitle>
                 <CardDescription>Access your property dashboard.</CardDescription>
