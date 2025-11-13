@@ -22,7 +22,7 @@ export default function Navbar() {
           <span className="font-headline">HuntR.</span>
         </a>
 
-        <div className="flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2">
           {navLinks.map((link) => (
             <Button
               key={link.label}
@@ -44,6 +44,9 @@ export default function Navbar() {
           <Button asChild className={`rounded-full px-5 ${gradientButtonClasses}`}>
             <a href="#">Login/Signup</a>
           </Button>
+        </div>
+        <div className="md:hidden">
+          {/* Add a mobile menu button here if needed in the future */}
         </div>
       </div>
     </nav>

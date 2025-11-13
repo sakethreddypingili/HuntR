@@ -63,7 +63,7 @@ export default function Hero() {
               className={`rounded-full px-4 py-2 font-semibold transition-all duration-300 ${
                 activeCategory === category
                   ? 'bg-accent text-accent-foreground shadow-md'
-                  : 'border-white/40 text-white hover:bg-white hover:text-primary'
+                  : 'border-white/40 text-blue-500 bg-white hover:bg-blue-100'
               }`}
               variant={activeCategory === category ? 'default' : 'outline'}
             >
