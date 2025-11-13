@@ -1,9 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { Home, Menu } from 'lucide-react';
+import { Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const navLinks = [
   { href: '#', label: 'Home', active: true },
@@ -23,14 +22,16 @@ export default function Navbar() {
           <span className="font-headline">HuntR.</span>
         </a>
 
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="flex items-center gap-2">
           {navLinks.map((link) => (
             <Button
               key={link.label}
               variant={link.active ? 'default' : 'ghost'}
               asChild
               className={`rounded-full px-4 font-semibold ${
-                link.active ? 'bg-accent text-accent-foreground hover:bg-accent/90' : 'hover:bg-primary/10'
+                link.active
+                  ? 'bg-accent text-accent-foreground hover:bg-accent/90'
+                  : 'text-primary hover:bg-primary/10'
               }`}
             >
               <a href={link.href}>{link.label}</a>
@@ -44,42 +45,6 @@ export default function Navbar() {
             <a href="#">Login/Signup</a>
           </Button>
         </div>
-
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="lg:hidden">
-              <Menu className="h-6 w-6" />
-              <span className="sr-only">Toggle navigation menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right">
-            <div className="flex flex-col gap-4 p-6">
-              <a className="flex items-center gap-2 text-2xl font-bold text-gray-800 mb-4" href="#">
-                <Home className="h-7 w-7 text-primary" />
-                <span className="font-headline">HuntR.</span>
-              </a>
-              {navLinks.map((link) => (
-                <Button
-                  key={link.label}
-                  variant={link.active ? 'default' : 'ghost'}
-                  asChild
-                  className={`justify-start rounded-full px-4 text-lg font-semibold ${
-                    link.active ? 'bg-accent text-accent-foreground' : ''
-                  }`}
-                >
-                  <a href={link.href}>{link.label}</a>
-                </Button>
-              ))}
-              <hr className="my-4"/>
-              <Button variant="outline" asChild className="rounded-full text-lg border-primary text-primary font-semibold">
-                <a href="#">For Owners</a>
-              </Button>
-              <Button asChild className={`rounded-full text-lg ${gradientButtonClasses}`}>
-                <a href="#">Login/Signup</a>
-              </Button>
-            </div>
-          </SheetContent>
-        </Sheet>
       </div>
     </nav>
   );
