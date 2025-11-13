@@ -29,7 +29,7 @@ export default function Navbar() {
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link
           href="/"
-          className="flex items-center gap-2 text-2xl font-bold text-white transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-[-5deg]"
+          className="flex items-center gap-2 rounded-lg border-2 border-yellow-400 p-0.5 text-2xl font-bold text-white transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-[-5deg]"
         >
           <Home className="h-7 w-7 text-primary" />
           <span className="font-headline">HuntR.</span>
