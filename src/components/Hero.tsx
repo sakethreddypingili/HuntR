@@ -62,10 +62,10 @@ export default function Hero() {
               onClick={() => handleFilterClick(category)}
               className={`rounded-full px-4 py-2 font-semibold transition-all duration-300 ${
                 activeCategory === category
-                  ? 'bg-accent text-accent-foreground shadow-md'
-                  : 'border-white/40 text-blue-500 bg-white hover:bg-blue-100'
+                  ? 'bg-accent text-accent-foreground shadow-md ring-2 ring-offset-2 ring-blue-500'
+                  : 'text-primary bg-white hover:bg-gray-200 hover:text-primary'
               }`}
-              variant={activeCategory === category ? 'default' : 'outline'}
+              variant={'outline'}
             >
               {category}
             </Button>
