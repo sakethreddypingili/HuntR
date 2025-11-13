@@ -39,7 +39,7 @@ export default function Navbar() {
                   'rounded-full px-4 font-semibold transition-all duration-300',
                   isActive
                     ? 'bg-accent text-accent-foreground hover:bg-primary'
-                    : 'bg-gray-200 text-green-600 border border-transparent hover:bg-gray-300 hover:text-green-700 hover:border-green-600'
+                    : 'bg-gray-200 text-primary border border-primary hover:bg-gray-200 hover:text-accent hover:border-accent'
                 )}
               >
                 <Link href={link.href}>{link.label}</Link>
