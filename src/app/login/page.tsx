@@ -15,11 +15,16 @@ export default function LoginPage() {
       <Navbar />
       <main className="flex items-center justify-center min-h-[calc(100vh-5rem)] bg-primary/5 px-4 animate-fade-in py-12 md:py-0">
         <div className="w-full max-w-4xl grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div className="hidden md:block animate-slide-in-left space-y-6">
-                <h2 className="text-3xl font-bold text-primary font-headline">Welcome Back!</h2>
-                <p className="text-muted-foreground text-lg">
-                    Log in to continue your search for the perfect brokerage-free home. Your saved listings and conversations are waiting for you.
-                </p>
+            <div className="space-y-6 animate-slide-in-left">
+                <div className="md:hidden text-center">
+                    <h2 className="text-3xl font-bold text-primary font-headline">Welcome Back!</h2>
+                </div>
+                <div className="hidden md:block">
+                  <h2 className="text-3xl font-bold text-primary font-headline">Welcome Back!</h2>
+                  <p className="text-muted-foreground text-lg mt-2">
+                      Log in to continue your search for the perfect brokerage-free home. Your saved listings and conversations are waiting for you.
+                  </p>
+                </div>
                 <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                         <CheckCircle className="h-6 w-6 text-accent mt-1 flex-shrink-0" />

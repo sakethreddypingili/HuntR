@@ -15,7 +15,7 @@ export default function SignupPage() {
       <Navbar />
       <main className="flex items-center justify-center min-h-[calc(100vh-5rem)] bg-primary/5 px-4 animate-fade-in py-12 md:py-0">
          <div className="w-full max-w-4xl grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <Card className="w-full shadow-2xl shadow-primary/10 animate-fade-in-up">
+            <Card className="w-full shadow-2xl shadow-primary/10 animate-fade-in-up md:order-2">
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl font-bold font-headline text-primary">Create Your Account</CardTitle>
                 <CardDescription>Join HuntR to find your brokerage-free home today.</CardDescription>
@@ -44,11 +44,16 @@ export default function SignupPage() {
                 </div>
               </CardFooter>
             </Card>
-             <div className="hidden md:block space-y-6 animate-slide-in-right">
-                <h2 className="text-3xl font-bold text-primary font-headline">A Better Way to Rent is Here</h2>
-                <p className="text-muted-foreground text-lg">
-                    Tired of endless fees and fake listings? So were we. That's why we built HuntR.
-                </p>
+             <div className="space-y-6 animate-slide-in-right md:order-1">
+                <div className="md:hidden text-center">
+                    <h2 className="text-3xl font-bold text-primary font-headline">A Better Way to Rent is Here</h2>
+                </div>
+                <div className="hidden md:block">
+                  <h2 className="text-3xl font-bold text-primary font-headline">A Better Way to Rent is Here</h2>
+                  <p className="text-muted-foreground text-lg mt-2">
+                      Tired of endless fees and fake listings? So were we. That's why we built HuntR.
+                  </p>
+                </div>
                 <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                         <CheckCircle className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
