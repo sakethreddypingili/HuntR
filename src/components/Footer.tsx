@@ -11,23 +11,23 @@ const footerSections = [
       { label: 'About Us', href: '/about' },
       { label: 'How We Verify', href: '/how-we-verify' },
       { label: 'For Owners', href: '/for-owners' },
-      { label: 'Careers', href: '#' },
-      { label: 'Testimonials', href: '#' },
+      { label: 'Careers', href: '/careers' },
+      { label: 'Testimonials', href: '/testimonials' },
     ],
   },
   {
     title: 'Support',
     links: [
-      { label: 'FAQs', href: '#' },
+      { label: 'FAQs', href: '/faqs' },
       { label: 'Contact Us', href: '#' },
-      { label: 'Sitemap', href: '#' },
+      { label: 'Sitemap', href: '/sitemap' },
     ],
   },
   {
     title: 'Legal',
     links: [
-      { label: 'Terms & Conditions', href: '#' },
-      { label: 'Privacy Policy', href: '#' },
+      { label: 'Terms & Conditions', href: '/terms-and-conditions' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
     ],
   },
 ];
