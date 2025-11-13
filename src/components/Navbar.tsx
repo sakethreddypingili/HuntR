@@ -45,8 +45,8 @@ export default function Navbar() {
                 className={cn(
                   'rounded-full px-4 font-semibold transition-all duration-300 border-2',
                   isActive
-                    ? 'bg-accent text-white border-primary hover:bg-primary'
-                    : 'bg-transparent text-white border-gray-600 hover:bg-gray-700 hover:text-white'
+                    ? 'bg-accent text-white border-primary hover:bg-primary hover:border-accent'
+                    : 'bg-transparent text-white border-gray-600 hover:bg-gray-700 hover:text-white hover:border-primary'
                 )}
               >
                 <Link href={link.href}>{link.label}</Link>
