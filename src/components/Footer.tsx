@@ -97,10 +97,10 @@ export default function Footer() {
         <div className="mt-12 flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex gap-4">
                 <Link href="#" aria-label="Get it on Google Play">
-                    <Image src="/google-play.png" alt="Get it on Google Play" width={135} height={40} className="hover:opacity-80 transition-opacity" />
+                    <Image src="https://assets.nobroker.in/nb-new/public/Common/android_download.svg" alt="Get it on Google Play" width={135} height={40} className="hover:opacity-80 transition-opacity" />
                 </Link>
                  <Link href="#" aria-label="Download on the App Store">
-                    <Image src="/app-store.png" alt="Download on the App Store" width={120} height={40} className="hover:opacity-80 transition-opacity" />
+                    <Image src="https://assets.nobroker.in/nb-new/public/Common/IOS_download.svg" alt="Download on the App Store" width={120} height={40} className="hover:opacity-80 transition-opacity" />
                 </Link>
             </div>
             <div className="flex gap-4">
