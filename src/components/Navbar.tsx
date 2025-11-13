@@ -19,12 +19,10 @@ export default function Navbar() {
     { href: '/for-owners', label: 'For Owners' },
   ];
 
-  const authLinks = [
-    { href: '/login', label: 'Login' },
-    { href: '/signup', label: 'Signup' },
-  ];
-  
-  const isAuthLinkActive = authLinks.some((link) => pathname.startsWith(link.href));
+  const isMainLinkActive = navLinks.some((link) => (link.href === '/' && pathname === '/') || (link.href !== '/' && pathname.startsWith(link.href)));
+
+  const isLoginActive = pathname.startsWith('/login');
+  const isSignupActive = pathname.startsWith('/signup');
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-black shadow-md">
@@ -40,7 +38,7 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => {
-            const isActive = !isAuthLinkActive && ((link.href === '/' && pathname === '/') || (link.href !== '/' && pathname.startsWith(link.href)));
+            const isActive = !isLoginActive && !isSignupActive && ((link.href === '/' && pathname === '/') || (link.href !== '/' && pathname.startsWith(link.href)));
             return (
               <Button
                 key={link.label}
@@ -58,24 +56,32 @@ export default function Navbar() {
             );
           })}
           <div className="mx-2 h-6 w-px bg-gray-600" />
-           {authLinks.map((link) => {
-             const isActive = pathname.startsWith(link.href);
-             return (
-                <Button
-                    key={link.label}
-                    asChild
-                    className={cn(
-                    'rounded-full px-5 font-semibold border-2 transition-all duration-300',
-                    isActive
-                        ? 'bg-gradient-to-br from-blue-600 to-green-500 text-white border-yellow-400'
-                        : 'bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-lg shadow-accent/30',
-                    'hover:from-green-500 hover:to-blue-600 hover:-translate-y-0.5'
-                    )}
-                >
-                    <Link href={link.href}>{link.label}</Link>
-                </Button>
-             )
-           })}
+           
+          <Button
+            asChild
+            className={cn(
+              'rounded-full px-5 font-semibold border-2 transition-transform duration-300',
+              isLoginActive
+                ? 'bg-gradient-to-br from-blue-600 to-green-500 text-white border-yellow-400'
+                : 'bg-black text-white border-white',
+              'hover:from-green-500 hover:to-blue-600 hover:-translate-y-0.5'
+            )}
+          >
+            <Link href="/login">Login</Link>
+          </Button>
+
+          <Button
+            asChild
+            className={cn(
+              'rounded-full px-5 font-semibold border-2 transition-transform duration-300',
+              isSignupActive
+                ? 'bg-gradient-to-br from-blue-600 to-green-500 text-white border-yellow-400'
+                : 'bg-green-600 text-white border-blue-500',
+              'hover:from-green-500 hover:to-blue-600 hover:-translate-y-0.5'
+            )}
+          >
+            <Link href="/signup">Signup</Link>
+          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -96,7 +102,7 @@ export default function Navbar() {
         <div className="md:hidden bg-black bg-opacity-95 backdrop-blur-sm absolute top-20 left-0 w-full">
           <div className="container mx-auto flex flex-col items-center gap-4 px-4 py-8">
             {navLinks.map((link) => {
-              const isActive = !isAuthLinkActive && ((link.href === '/' && pathname === '/') || (link.href !== '/' && pathname.startsWith(link.href)));
+               const isActive = !isLoginActive && !isSignupActive && ((link.href === '/' && pathname === '/') || (link.href !== '/' && pathname.startsWith(link.href)));
               return (
                 <Button
                   key={`mobile-${link.label}`}
@@ -113,25 +119,32 @@ export default function Navbar() {
               );
             })}
              <div className="w-full h-px bg-gray-700 my-4" />
-            {authLinks.map((link) => {
-              const isActive = pathname.startsWith(link.href);
-              return (
-                <Button 
-                    key={`mobile-${link.label}`}
-                    asChild 
-                    onClick={() => setIsMobileMenuOpen(false)} 
-                    className={cn(
-                        'w-full text-center text-lg py-6 rounded-lg font-semibold border-2 transition-all duration-300', 
-                        isActive 
-                            ? 'bg-gradient-to-br from-blue-600 to-green-500 text-white border-yellow-400' 
-                            : 'bg-gradient-to-br from-primary to-accent text-primary-foreground',
-                        'hover:from-green-500 hover:to-blue-600'
-                    )}
-                >
-                  <Link href={link.href}>{link.label}</Link>
-                </Button>
-              )
-            })}
+            <Button 
+                asChild 
+                onClick={() => setIsMobileMenuOpen(false)} 
+                className={cn(
+                    'w-full text-center text-lg py-6 rounded-lg font-semibold border-2 transition-all duration-300', 
+                    isLoginActive 
+                        ? 'bg-gradient-to-br from-blue-600 to-green-500 text-white border-yellow-400' 
+                        : 'bg-black text-white border-white',
+                    'hover:from-green-500 hover:to-blue-600'
+                )}
+            >
+              <Link href="/login">Login</Link>
+            </Button>
+             <Button 
+                asChild 
+                onClick={() => setIsMobileMenuOpen(false)} 
+                className={cn(
+                    'w-full text-center text-lg py-6 rounded-lg font-semibold border-2 transition-all duration-300', 
+                    isSignupActive
+                        ? 'bg-gradient-to-br from-blue-600 to-green-500 text-white border-yellow-400' 
+                        : 'bg-green-600 text-white border-blue-500',
+                    'hover:from-green-500 hover:to-blue-600'
+                )}
+            >
+              <Link href="/signup">Signup</Link>
+            </Button>
           </div>
         </div>
       )}
