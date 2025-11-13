@@ -13,8 +13,8 @@ export default function LoginPage() {
   return (
     <>
       <Navbar />
-      <main className="flex items-center justify-center min-h-[90vh] bg-primary/5 px-4 animate-fade-in">
-        <div className="w-full max-w-4xl grid md:grid-cols-2 gap-12 items-center">
+      <main className="flex items-center justify-center min-h-[calc(100vh-5rem)] bg-primary/5 px-4 animate-fade-in py-12 md:py-0">
+        <div className="w-full max-w-4xl grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="hidden md:block animate-slide-in-left space-y-6">
                 <h2 className="text-3xl font-bold text-primary font-headline">Welcome Back!</h2>
                 <p className="text-muted-foreground text-lg">

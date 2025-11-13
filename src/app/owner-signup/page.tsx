@@ -13,8 +13,8 @@ export default function OwnerSignupPage() {
   return (
     <>
       <Navbar />
-      <main className="flex items-center justify-center min-h-[90vh] bg-primary/5 px-4 animate-fade-in">
-         <div className="w-full max-w-4xl grid md:grid-cols-2 gap-12 items-center">
+      <main className="flex items-center justify-center min-h-[calc(100vh-5rem)] bg-primary/5 px-4 animate-fade-in py-12 md:py-0">
+         <div className="w-full max-w-4xl grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <Card className="w-full shadow-2xl shadow-primary/10 animate-fade-in-up">
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl font-bold font-headline text-primary">Become a HuntR Partner</CardTitle>

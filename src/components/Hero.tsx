@@ -21,7 +21,7 @@ export default function Hero() {
   const gradientButtonClasses = 'bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-lg shadow-accent/30 transition-all duration-300 hover:from-accent hover:to-primary hover:shadow-primary/40 hover:-translate-y-1';
 
   return (
-    <section className="relative flex min-h-[85vh] w-full items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-[calc(100vh-5rem)] w-full items-center justify-center overflow-hidden">
       {heroImage && (
         <Image
           src={heroImage.imageUrl}
@@ -67,7 +67,7 @@ export default function Hero() {
                   'rounded-full px-4 py-2 font-semibold transition-all duration-300 border-2',
                   isActive
                     ? 'bg-green-600 text-white border-blue-500 hover:bg-blue-600 hover:border-green-500'
-                    : 'bg-gray-200 text-blue-600 border-transparent hover:bg-gray-300 hover:text-green-600 hover:border-green-500'
+                    : 'bg-gray-200 text-blue-600 border-blue-500 hover:bg-gray-400 hover:text-green-500 hover:border-green-500'
                 )}
                 variant={'outline'}
               >

@@ -2,7 +2,7 @@
 import Navbar from '@/components/Navbar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Users, BarChart, TrendingUp, ShieldCheck, Star, Sparkles, UserPlus } from 'lucide-react';
+import { CheckCircle, BarChart, TrendingUp, ShieldCheck, Star, Sparkles, UserPlus } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ForOwnersPage() {
@@ -12,9 +12,9 @@ export default function ForOwnersPage() {
     <>
       <Navbar />
       <div className="bg-primary/5 animate-fade-in">
-        <header className="container mx-auto px-4 py-20 text-center">
-          <h1 className="text-5xl font-bold text-primary font-headline animate-slide-in-down">The Smart Way to Rent Your Property</h1>
-          <p className="mt-4 text-xl text-muted-foreground max-w-3xl mx-auto animate-slide-in-up">
+        <header className="container mx-auto px-4 py-16 md:py-20 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary font-headline animate-slide-in-down">The Smart Way to Rent Your Property</h1>
+          <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto animate-slide-in-up">
             Connect with a community of thousands of verified tenants. Find the perfect match for your property, hassle-free and with zero brokerage fees.
           </p>
           <div className="mt-8 animate-fade-in-up">
@@ -24,8 +24,8 @@ export default function ForOwnersPage() {
           </div>
         </header>
 
-        <main className="container mx-auto px-4 pb-20">
-          <section className="text-center mb-20">
+        <main className="container mx-auto px-4 pb-16 md:pb-20">
+          <section className="text-center mb-16 md:mb-20">
             <h2 className="text-4xl font-bold text-gray-800 font-headline sm:text-5xl">
               Why Partner with HuntR?
             </h2>
@@ -35,7 +35,7 @@ export default function ForOwnersPage() {
             <div className="mt-6 w-24 h-1.5 bg-accent mx-auto rounded-full" />
           </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 md:mb-20">
             <Card className="text-center border-0 shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
               <CardHeader>
                 <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-accent/10 text-accent">
@@ -79,7 +79,7 @@ export default function ForOwnersPage() {
             </Card>
           </div>
           
-          <section className="bg-white p-12 rounded-lg shadow-xl mb-20">
+          <section className="bg-white p-8 md:p-12 rounded-lg shadow-xl mb-16 md:mb-20">
              <h2 className="text-3xl font-bold text-center text-primary font-headline mb-10">Maximize Your Occupancy and Income</h2>
              <div className="grid md:grid-cols-2 gap-10 items-center">
                  <div className="space-y-6">

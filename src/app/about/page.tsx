@@ -11,17 +11,17 @@ export default function AboutPage() {
     <>
       <Navbar />
       <div className="bg-white text-gray-800 animate-fade-in">
-        <header className="bg-primary/10 py-20">
+        <header className="bg-primary/10 py-16 md:py-20">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-5xl font-bold text-primary font-headline animate-slide-in-down">About HuntR</h1>
-            <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-in-up">
+            <h1 className="text-4xl md:text-5xl font-bold text-primary font-headline animate-slide-in-down">About HuntR</h1>
+            <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto animate-slide-in-up">
               Your trusted partner in finding a home, not just a house. We're rebuilding the rental experience on a foundation of trust.
             </p>
           </div>
         </header>
 
-        <main className="container mx-auto px-4 py-16">
-          <section className="grid md:grid-cols-2 gap-12 items-center mb-20">
+        <main className="container mx-auto px-4 py-12 md:py-16">
+          <section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-16 md:mb-20">
             <div className="animate-slide-in-left">
               <h2 className="text-3xl font-bold text-gray-800 font-headline mb-4">Our Story</h2>
               <p className="text-lg text-muted-foreground mb-4">
@@ -45,7 +45,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <section className="py-20 grid md:grid-cols-2 gap-12 items-center">
+          <section className="py-12 md:py-20 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="animate-slide-in-left order-2 md:order-1">
                  <Image
                   src="https://picsum.photos/seed/vision/600/400"
@@ -74,7 +74,7 @@ export default function AboutPage() {
             </div>
           </section>
           
-          <section className="text-center py-20 bg-primary/5 rounded-lg">
+          <section className="text-center py-16 md:py-20 bg-primary/5 rounded-lg">
             <h2 className="text-3xl font-bold text-gray-800 font-headline mb-10">Why We Do What We Do</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="p-6 transform hover:-translate-y-2 transition-transform duration-300 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
@@ -95,7 +95,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-           <section className="py-20 text-center">
+           <section className="py-16 md:py-20 text-center">
             <div className="animate-fade-in">
                 <Zap className="h-16 w-16 text-primary mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-gray-800 font-headline mb-4">Join Our Journey</h2>
