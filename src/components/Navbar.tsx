@@ -19,8 +19,12 @@ export default function Navbar() {
     { href: '/for-owners', label: 'For Owners' },
   ];
 
-  const gradientButtonClasses =
-    'bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-lg shadow-accent/30 transition-all duration-300 hover:from-accent hover:to-primary hover:shadow-primary/40 hover:-translate-y-0.5';
+  const authLinks = [
+    { href: '/login', label: 'Login' },
+    { href: '/signup', label: 'Signup' },
+  ];
+  
+  const isAuthLinkActive = authLinks.some((link) => pathname.startsWith(link.href));
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-black shadow-md">
@@ -36,7 +40,7 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => {
-            const isActive = (link.href === '/' && pathname === '/') || (link.href !== '/' && pathname.startsWith(link.href));
+            const isActive = !isAuthLinkActive && ((link.href === '/' && pathname === '/') || (link.href !== '/' && pathname.startsWith(link.href)));
             return (
               <Button
                 key={link.label}
@@ -45,8 +49,8 @@ export default function Navbar() {
                 className={cn(
                   'rounded-full px-4 font-semibold transition-all duration-300 border-2',
                   isActive
-                    ? 'bg-accent text-white border-primary hover:bg-primary hover:border-accent'
-                    : 'bg-transparent text-white border-gray-600 hover:bg-gray-700 hover:text-white hover:border-primary'
+                    ? 'bg-green-600 text-white border-blue-500'
+                    : 'bg-black text-white border-gray-600 hover:bg-gray-700 hover:text-white hover:border-blue-500'
                 )}
               >
                 <Link href={link.href}>{link.label}</Link>
@@ -54,12 +58,24 @@ export default function Navbar() {
             );
           })}
           <div className="mx-2 h-6 w-px bg-gray-600" />
-           <Button variant="ghost" asChild className="rounded-full text-gray-300 font-semibold hover:bg-gray-700 hover:text-white">
-            <Link href="/login">Login</Link>
-          </Button>
-          <Button asChild className={cn('rounded-full px-5', gradientButtonClasses)}>
-            <Link href="/signup">Signup</Link>
-          </Button>
+           {authLinks.map((link) => {
+             const isActive = pathname.startsWith(link.href);
+             return (
+                <Button
+                    key={link.label}
+                    asChild
+                    className={cn(
+                    'rounded-full px-5 font-semibold border-2 transition-all duration-300',
+                    isActive
+                        ? 'bg-gradient-to-br from-blue-600 to-green-500 text-white border-yellow-400'
+                        : 'bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-lg shadow-accent/30',
+                    'hover:from-green-500 hover:to-blue-600 hover:-translate-y-0.5'
+                    )}
+                >
+                    <Link href={link.href}>{link.label}</Link>
+                </Button>
+             )
+           })}
         </div>
 
         {/* Mobile Menu Button */}
@@ -80,7 +96,7 @@ export default function Navbar() {
         <div className="md:hidden bg-black bg-opacity-95 backdrop-blur-sm absolute top-20 left-0 w-full">
           <div className="container mx-auto flex flex-col items-center gap-4 px-4 py-8">
             {navLinks.map((link) => {
-              const isActive = (link.href === '/' && pathname === '/') || (link.href !== '/' && pathname.startsWith(link.href));
+              const isActive = !isAuthLinkActive && ((link.href === '/' && pathname === '/') || (link.href !== '/' && pathname.startsWith(link.href)));
               return (
                 <Button
                   key={`mobile-${link.label}`}
@@ -89,7 +105,7 @@ export default function Navbar() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
                     'w-full text-center text-lg py-6 rounded-lg font-semibold transition-all duration-300 border-2',
-                    isActive ? 'bg-accent text-white border-primary' : 'bg-transparent text-gray-300 border-gray-700 hover:bg-gray-700 hover:text-white'
+                    isActive ? 'bg-green-600 text-white border-blue-500' : 'bg-transparent text-gray-300 border-gray-700 hover:bg-gray-700 hover:text-white'
                   )}
                 >
                   <Link href={link.href}>{link.label}</Link>
@@ -97,12 +113,25 @@ export default function Navbar() {
               );
             })}
              <div className="w-full h-px bg-gray-700 my-4" />
-            <Button variant="ghost" asChild onClick={() => setIsMobileMenuOpen(false)} className="w-full text-center text-lg py-6 rounded-lg font-semibold text-gray-300 hover:bg-gray-700 hover:text-white">
-              <Link href="/login">Login</Link>
-            </Button>
-            <Button asChild onClick={() => setIsMobileMenuOpen(false)} className={cn('w-full text-center text-lg py-6 rounded-lg font-semibold', gradientButtonClasses)}>
-              <Link href="/signup">Signup</Link>
-            </Button>
+            {authLinks.map((link) => {
+              const isActive = pathname.startsWith(link.href);
+              return (
+                <Button 
+                    key={`mobile-${link.label}`}
+                    asChild 
+                    onClick={() => setIsMobileMenuOpen(false)} 
+                    className={cn(
+                        'w-full text-center text-lg py-6 rounded-lg font-semibold border-2 transition-all duration-300', 
+                        isActive 
+                            ? 'bg-gradient-to-br from-blue-600 to-green-500 text-white border-yellow-400' 
+                            : 'bg-gradient-to-br from-primary to-accent text-primary-foreground',
+                        'hover:from-green-500 hover:to-blue-600'
+                    )}
+                >
+                  <Link href={link.href}>{link.label}</Link>
+                </Button>
+              )
+            })}
           </div>
         </div>
       )}
