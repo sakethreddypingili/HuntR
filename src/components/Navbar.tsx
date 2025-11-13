@@ -76,6 +76,8 @@ export default function Navbar() {
               'rounded-full px-5 font-semibold border-2 transition-transform duration-300',
               isSignupActive
                 ? 'bg-gradient-to-br from-blue-600 to-green-500 text-white border-yellow-400'
+                : isLoginActive 
+                ? 'bg-black text-white border-white'
                 : 'bg-green-600 text-white border-blue-500',
               'hover:from-green-500 hover:to-blue-600 hover:-translate-y-0.5'
             )}
@@ -139,6 +141,8 @@ export default function Navbar() {
                     'w-full text-center text-lg py-6 rounded-lg font-semibold border-2 transition-all duration-300', 
                     isSignupActive
                         ? 'bg-gradient-to-br from-blue-600 to-green-500 text-white border-yellow-400' 
+                        : isLoginActive
+                        ? 'bg-black text-white border-white'
                         : 'bg-green-600 text-white border-blue-500',
                     'hover:from-green-500 hover:to-blue-600'
                 )}
