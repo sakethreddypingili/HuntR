@@ -67,7 +67,7 @@ export default function FaqsPage() {
                 {tenantFaqs.map((faq, index) => (
                    <AccordionItem value={`item-${index}`} key={index}>
                     <AccordionTrigger className="text-lg font-semibold text-left">{faq.question}</AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed">
+                    <AccordionContent className="text-muted-foreground leading-relaxed bg-muted p-4 rounded-lg">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -80,7 +80,7 @@ export default function FaqsPage() {
                 {ownerFaqs.map((faq, index) => (
                    <AccordionItem value={`item-${index}`} key={index}>
                     <AccordionTrigger className="text-lg font-semibold text-left">{faq.question}</AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed">
+                    <AccordionContent className="text-muted-foreground leading-relaxed bg-muted p-4 rounded-lg">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
