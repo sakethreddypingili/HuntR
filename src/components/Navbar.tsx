@@ -29,7 +29,7 @@ export default function Navbar() {
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link
           href="/"
-          className="flex items-center gap-2 rounded-lg border-2 border-yellow-400 p-0.5 text-2xl font-bold text-white transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-[-5deg]"
+          className="flex items-center gap-2 rounded-lg border-2 border-yellow-400 p-0.5 text-2xl font-bold text-white shadow-[0_0_10px_theme(colors.yellow.400)] transition-all duration-300 ease-in-out hover:scale-110 hover:rotate-[-5deg] hover:shadow-[0_0_20px_theme(colors.yellow.400)]"
         >
           <Home className="h-7 w-7 text-primary" />
           <span className="font-headline">HuntR.</span>
@@ -76,7 +76,7 @@ export default function Navbar() {
               'rounded-full px-5 font-semibold border-2 transition-transform duration-300',
               isSignupActive
                 ? 'bg-gradient-to-br from-blue-600 to-green-500 text-white border-yellow-400'
-                : isLoginActive 
+                : isLoginActive
                 ? 'bg-black text-white border-white'
                 : 'bg-green-600 text-white border-blue-500',
               'hover:from-green-500 hover:to-blue-600 hover:-translate-y-0.5'
