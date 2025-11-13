@@ -51,14 +51,14 @@ export default function Footer() {
             <div className="text-center md:text-left">
                 <h3 className="text-2xl font-bold text-white">Find a Property</h3>
                 <p className="text-muted-foreground mt-2">Select from thousands of options, without brokerage.</p>
-                <Button asChild variant="outline" className="mt-4 border-accent text-accent hover:bg-accent/10">
+                <Button asChild className="mt-4 bg-gray-500 border-yellow-500 text-green-600 font-bold hover:bg-black hover:text-white hover:border-blue-500 hover:shadow-[0_0_10px_theme(colors.blue.500)] transition-all">
                     <Link href="/">Find Now</Link>
                 </Button>
             </div>
             <div className="text-center md:text-left md:border-l border-gray-700 md:pl-8">
                 <h3 className="text-2xl font-bold text-white">List Your Property</h3>
                 <p className="text-muted-foreground mt-2">For Free. Without any brokerage.</p>
-                 <Button asChild variant="outline" className="mt-4 border-primary text-primary hover:bg-primary/10">
+                 <Button asChild className="mt-4 bg-gray-500 border-yellow-500 text-green-600 font-bold hover:bg-black hover:text-white hover:border-blue-500 hover:shadow-[0_0_10px_theme(colors.blue.500)] transition-all">
                     <Link href="/for-owners">Free Posting</Link>
                 </Button>
             </div>
@@ -97,10 +97,10 @@ export default function Footer() {
         <div className="mt-12 flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex gap-4">
                 <Link href="#" aria-label="Get it on Google Play">
-                    <Image src="https://assets.nobroker.in/nb-new/public/Common/android_download.svg" alt="Get it on Google Play" width={135} height={40} className="hover:opacity-80 transition-opacity" />
+                    <Image src="https://assets.nobroker.in/nb-new/public/Common/google-play-download.svg" alt="Get it on Google Play" width={135} height={40} className="hover:opacity-80 transition-opacity" />
                 </Link>
                  <Link href="#" aria-label="Download on the App Store">
-                    <Image src="https://assets.nobroker.in/nb-new/public/Common/IOS_download.svg" alt="Download on the App Store" width={120} height={40} className="hover:opacity-80 transition-opacity" />
+                    <Image src="https://assets.nobroker.in/nb-new/public/Common/apple-store-download.svg" alt="Download on the App Store" width={120} height={40} className="hover:opacity-80 transition-opacity" />
                 </Link>
             </div>
             <div className="flex gap-4">
