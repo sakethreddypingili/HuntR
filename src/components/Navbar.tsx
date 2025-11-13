@@ -24,7 +24,10 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full bg-black shadow-md">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-white">
+        <Link 
+          href="/" 
+          className="flex items-center gap-2 text-2xl font-bold text-white transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-[-5deg]"
+        >
           <Home className="h-7 w-7 text-primary" />
           <span className="font-headline">HuntR.</span>
         </Link>
@@ -39,10 +42,10 @@ export default function Navbar() {
                 variant="ghost"
                 asChild
                 className={cn(
-                  'rounded-full px-4 font-semibold transition-all duration-300',
+                  'rounded-full px-4 font-semibold transition-all duration-300 border-2',
                   isActive
-                    ? 'bg-accent text-white hover:bg-primary'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                    ? 'bg-accent text-white border-accent hover:bg-primary'
+                    : 'bg-black text-primary border-primary hover:bg-gray-700 hover:text-accent hover:border-accent'
                 )}
               >
                 <Link href={link.href}>{link.label}</Link>
@@ -84,8 +87,10 @@ export default function Navbar() {
                   asChild
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
-                    'w-full text-center text-lg py-6 rounded-lg font-semibold transition-all duration-300',
-                    isActive ? 'bg-accent text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                    'w-full text-center text-lg py-6 rounded-lg font-semibold transition-all duration-300 border-2',
+                    isActive 
+                      ? 'bg-accent text-white border-accent' 
+                      : 'bg-black text-primary border-primary'
                   )}
                 >
                   <Link href={link.href}>{link.label}</Link>
