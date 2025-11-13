@@ -6,27 +6,27 @@ const verificationSteps = [
   {
     icon: <UserCheck className="h-10 w-10" />,
     title: '1. Owner Identity Verification',
-    description: 'We start by confirming the owner\'s identity. We collect and verify government-issued ID proofs from every property owner. This foundational step ensures you are always dealing with a legitimate, identifiable individual, eliminating the risk of scams.',
+    description: "Our process begins with the person, not the property. We rigorously confirm every owner's identity using government-issued ID proofs. This crucial first step ensures you're always dealing with a legitimate, identifiable individual, eliminating the risk of phantom landlords and online scams.",
   },
   {
     icon: <Footprints className="h-10 w-10" />,
     title: '2. On-Site Physical Visit',
-    description: 'A picture may be worth a thousand words, but a physical visit is priceless. Our dedicated "HuntR Scouts" visit each property in person. They walk through the space, check the amenities, assess cleanliness, and verify that the living conditions match the listing\'s claims.',
+    description: "A picture may be worth a thousand words, but a physical visit tells the true story. Our dedicated 'HuntR Scouts'—real people, not drones—visit each and every property. They walk through the space, verify dimensions, check amenities, and assess the overall condition and cleanliness, ensuring it meets our high standards.",
   },
    {
     icon: <Camera className="h-10 w-10" />,
-    title: '3. Photo & Video Authentication',
-    description: 'During the physical visit, our scouts take high-resolution, unedited photos and videos of the property. This provides an unbiased, real-time view of the space, so what you see on our platform is exactly what you get. No more doctored images or misleading angles.',
+    title: '3. Authentic Photo & Video',
+    description: "No more deceptive wide-angle lenses or suspiciously bright photos. During the physical visit, our scouts capture high-resolution, unedited photos and videos. This provides an unbiased, real-time view of the space. What you see on our platform is an authentic representation of what you get.",
   },
   {
     icon: <FileText className="h-10 w-10" />,
     title: '4. Essential Document Check',
-    description: 'To provide an extra layer of security, we conduct a basic check of essential property documents. This helps us ensure there are no glaring red flags, ongoing disputes, or hidden legal issues that could complicate your tenancy.',
+    description: "To add an extra layer of security and legitimacy, we conduct a basic but critical check of essential property documents, like ownership papers and utility bills. This helps us ensure there are no glaring red flags, ongoing disputes, or hidden legal issues that could complicate your tenancy.",
   },
    {
     icon: <MessageSquare className="h-10 w-10" />,
-    title: '5. Continuous Feedback Loop',
-    description: 'Our verification process doesn’t end with the listing. We maintain a continuous feedback loop with our community of tenants. Regular feedback helps us ensure that owners maintain the quality of their properties, and we act swiftly on any reported discrepancies.',
+    title: '5. Continuous Community Feedback',
+    description: 'Our verification is not a one-time event. We maintain a continuous feedback loop with our community of tenants. User-reported issues are investigated promptly, ensuring that owners maintain the quality of their properties and that our listings remain the most trustworthy in the market.',
   },
 ];
 
@@ -39,7 +39,7 @@ export default function Verification() {
             Our Commitment to Authenticity
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto animate-slide-in-up">
-            We believe trust is built on transparency. That's why we developed a comprehensive, multi-step verification process to ensure every listing on HuntR is 100% authentic, safe, and ready for you to call home.
+            We don't just list properties; we verify them. This is our promise to you.
           </p>
           <div className="mt-6 w-24 h-1.5 bg-accent mx-auto rounded-full" />
         </div>
