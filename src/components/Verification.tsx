@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardTitle, CardDescription } from '@/components/ui/card';
-import { UserCheck, Footprints, FileText, Camera, MessageSquareCheck } from 'lucide-react';
+import { UserCheck, Footprints, FileText, Camera, MessageSquare } from 'lucide-react';
 
 const verificationSteps = [
   {
@@ -24,7 +24,7 @@ const verificationSteps = [
     description: 'To provide an extra layer of security, we conduct a basic check of essential property documents. This helps us ensure there are no glaring red flags, ongoing disputes, or hidden legal issues that could complicate your tenancy.',
   },
    {
-    icon: <MessageSquareCheck className="h-10 w-10" />,
+    icon: <MessageSquare className="h-10 w-10" />,
     title: '5. Continuous Feedback Loop',
     description: 'Our verification process doesn’t end with the listing. We maintain a continuous feedback loop with our community of tenants. Regular feedback helps us ensure that owners maintain the quality of their properties, and we act swiftly on any reported discrepancies.',
   },
