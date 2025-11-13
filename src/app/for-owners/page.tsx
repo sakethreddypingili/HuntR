@@ -124,7 +124,7 @@ export default function ForOwnersPage() {
           <section className="text-center">
             <h2 className="text-3xl font-bold font-headline mb-4">Have Questions?</h2>
             <p className="text-muted-foreground mb-6 max-w-xl mx-auto">We're here to help. Check out our FAQ or contact our support team for assistance.</p>
-            <Button asChild variant="outline" size="lg" className="border-accent text-accent hover:bg-accent hover:text-primary hover:border-primary">
+            <Button asChild variant="outline" size="lg" className="border-accent text-accent hover:bg-accent hover:text-primary-foreground hover:border-primary">
               <Link href="/contact-us">Contact Support</Link>
             </Button>
           </section>
