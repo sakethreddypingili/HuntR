@@ -115,19 +115,8 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
 
   }, [searchQuery, citiesData]);
 
-  const getPropertyCountForCategory = (place: Place, category: string) => {
-     switch (category) {
-      case 'PG/Hostel':
-        return place.propertyCounts['PG/Hostel'];
-      case '1 BHK':
-        return place.propertyCounts['1 BHK'];
-      case '2 BHK':
-        return place.propertyCounts['2 BHK'];
-      case 'Flat/Roommate':
-        return place.propertyCounts['Flat/Roommate'];
-      default:
-        return 0;
-    }
+  const getTotalPropertyCount = (place: Place) => {
+    return Object.values(place.propertyCounts).reduce((sum, count) => sum + count, 0);
   };
 
 
@@ -139,7 +128,7 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
             <div key={city.name}>
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-800 font-headline flex items-center">
-                  {activeCategory} in {city.name}
+                  Properties in {city.name}
                   <ChevronRight className="h-7 w-7 text-primary ml-1" />
                 </h2>
                 {city.places.length > 10 && (
@@ -175,7 +164,7 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                              <div className="absolute bottom-0 left-0 p-3">
                                 <h3 className="font-bold text-white text-lg">{place.name}</h3>
-                                <p className="text-sm text-gray-200">{getPropertyCountForCategory(place, activeCategory)} Properties</p>
+                                <p className="text-sm text-gray-200">{getTotalPropertyCount(place)} Properties</p>
                             </div>
                           </div>
                         </CardContent>
@@ -198,5 +187,3 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
     </section>
   );
 }
-
-    
