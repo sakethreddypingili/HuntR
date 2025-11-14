@@ -1,9 +1,8 @@
-
 'use client';
 
 import * as React from 'react';
 import Image from 'next/image';
-import { popularCities, City } from '@/lib/popular-places';
+import { listings, Listing } from '@/lib/listings';
 import { Card, CardContent } from '@/components/ui/card';
 import {
   Carousel,
@@ -19,27 +18,96 @@ interface PopularPlacesProps {
   activeCategory: string;
 }
 
+interface Place {
+  name: string;
+  imageUrl: string;
+  propertyCounts: {
+    'PG/Hostel': number;
+    '1 BHK': number;
+    '2 BHK': number;
+  };
+}
+
+interface City {
+  name: string;
+  places: Place[];
+}
+
+const mapBhkOrSharingToCategory = (bhkOrSharing: string): string | null => {
+  if (bhkOrSharing.includes('SHARING')) return 'PG/Hostel';
+  if (bhkOrSharing === '1BK' || bhkOrSharing === '1BHK') return '1 BHK';
+  if (bhkOrSharing === '2BHK') return '2 BHK';
+  return null;
+}
+
+const processListings = (listings: Listing[]): City[] => {
+  const citiesMap: { [cityName: string]: { [placeName: string]: Place } } = {};
+
+  listings.forEach((listing) => {
+    if (!citiesMap[listing.city]) {
+      citiesMap[listing.city] = {};
+    }
+
+    if (!citiesMap[listing.city][listing.location]) {
+      citiesMap[listing.city][listing.location] = {
+        name: listing.location,
+        imageUrl: listing.main_image_url, // Use first image found for the location
+        propertyCounts: {
+          'PG/Hostel': 0,
+          '1 BHK': 0,
+          '2 BHK': 0,
+        },
+      };
+    }
+
+    const category = mapBhkOrSharingToCategory(listing.bhk_or_sharing);
+    if (category) {
+      if (category === 'PG/Hostel') {
+          citiesMap[listing.city][listing.location].propertyCounts['PG/Hostel']++;
+      } else if (category === '1 BHK') {
+          citiesMap[listing.city][listing.location].propertyCounts['1 BHK']++;
+      } else if (category === '2 BHK') {
+          citiesMap[listing.city][listing.location].propertyCounts['2 BHK']++;
+      }
+    }
+  });
+  
+  const cities: City[] = Object.keys(citiesMap).map(cityName => ({
+      name: cityName,
+      places: Object.values(citiesMap[cityName])
+  }));
+
+  return cities;
+};
+
+
 export default function PopularPlaces({ searchQuery, activeCategory }: PopularPlacesProps) {
   
+  const citiesData = React.useMemo(() => processListings(listings), []);
+
   const filteredCities = React.useMemo(() => {
     if (!searchQuery) {
-      return popularCities;
+      return citiesData;
     }
-    return popularCities.filter(city => 
-      city.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  }, [searchQuery]);
+    return citiesData
+      .map(city => ({
+        ...city,
+        places: city.places.filter(place => place.name.toLowerCase().includes(searchQuery.toLowerCase()))
+      }))
+      .filter(city => city.name.toLowerCase().includes(searchQuery.toLowerCase()) || city.places.length > 0);
 
-  const getPropertyCountForCategory = (place: any, category: string) => {
-    switch (category) {
+  }, [searchQuery, citiesData]);
+
+  const getPropertyCountForCategory = (place: Place, category: string) => {
+     switch (category) {
       case 'PG/Hostel':
-        return place.propertyCounts.pg;
+        return place.propertyCounts['PG/Hostel'];
       case '1 BHK':
-        return place.propertyCounts.oneBhk;
+        return place.propertyCounts['1 BHK'];
       case '2 BHK':
-        return place.propertyCounts.twoBhk;
+        return place.propertyCounts['2 BHK'];
       default:
-        return place.propertyCount;
+        return 0;
     }
   };
 
@@ -59,7 +127,6 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
               <Carousel
                 opts={{
                   align: 'start',
-                  loop: true,
                 }}
                 className="w-full"
               >
@@ -75,6 +142,7 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
                               fill
                               className="object-cover transition-transform duration-300 group-hover:scale-105"
                               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 20vw, 12.5vw"
+                              unoptimized
                             />
                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                              <div className="absolute bottom-0 left-0 p-3">
@@ -94,7 +162,7 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
           ))}
            {filteredCities.length === 0 && (
             <div className="text-center py-10">
-              <p className="text-lg text-muted-foreground">No cities found for your search. Try another city!</p>
+              <p className="text-lg text-muted-foreground">No cities or places found for your search. Try another query!</p>
             </div>
           )}
         </div>

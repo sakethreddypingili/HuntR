@@ -28,6 +28,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'mathtestengine.42web.io',
+        port: '',
+        pathname: '/**',
+      }
     ],
   },
 };
