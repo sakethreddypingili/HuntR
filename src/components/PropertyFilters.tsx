@@ -9,7 +9,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
-import { Utensils, ShoppingCart, Park, Train, School, Shield, IndianRupee } from 'lucide-react';
+import { Utensils, ShoppingCart, TreePine, Train, School, Shield, IndianRupee } from 'lucide-react';
 
 interface PropertyFiltersProps {
   priceRange: number[];
@@ -26,7 +26,7 @@ const furnishingOptions = ["Any", "Fully Furnished", "Semi Furnished", "Unfurnis
 const lifestyleOptions = [
     { name: "Restaurants", icon: <Utensils className="h-5 w-5" /> },
     { name: "Malls", icon: <ShoppingCart className="h-5 w-5" /> },
-    { name: "Parks", icon: <Park className="h-5 w-5" /> },
+    { name: "Parks", icon: <TreePine className="h-5 w-5" /> },
     { name: "Transport", icon: <Train className="h-5 w-5" /> },
     { name: "Schools", icon: <School className="h-5 w-5" /> },
     { name: "Safety", icon: <Shield className="h-5 w-5" /> },

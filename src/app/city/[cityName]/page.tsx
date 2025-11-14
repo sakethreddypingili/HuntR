@@ -8,14 +8,6 @@ import PropertyCard from '@/components/PropertyCard';
 import { notFound } from 'next/navigation';
 import PropertyFilters from '@/components/PropertyFilters';
 
-// This function is needed for Next.js to know which city pages to pre-render at build time.
-export function generateStaticParams() {
-  const cities = [...new Set(listings.map((listing) => listing.city.toLowerCase()))];
-  return cities.map((cityName) => ({
-    cityName: encodeURIComponent(cityName),
-  }));
-}
-
 export default function CityPage({ params }: { params: { cityName: string } }) {
   const cityName = decodeURIComponent(params.cityName);
   const cityListings = useMemo(() => listings.filter(
