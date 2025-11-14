@@ -5,7 +5,8 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Building, Users, Heart, Zap, Target, Eye } from 'lucide-react';
 
 export default function AboutPage() {
-  const aboutImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
+  const aboutStoryImage = PlaceHolderImages.find((img) => img.id === 'about-story');
+  const aboutVisionImage = PlaceHolderImages.find((img) => img.id === 'about-vision');
 
   return (
     <>
@@ -32,14 +33,14 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="animate-slide-in-right">
-              {aboutImage && (
+              {aboutStoryImage && (
                 <Image
-                  src={aboutImage.imageUrl}
-                  alt="A beautiful, modern living room"
+                  src={aboutStoryImage.imageUrl}
+                  alt={aboutStoryImage.description}
                   width={600}
                   height={400}
                   className="rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300"
-                  data-ai-hint={aboutImage.imageHint}
+                  data-ai-hint={aboutStoryImage.imageHint}
                 />
               )}
             </div>
@@ -47,14 +48,16 @@ export default function AboutPage() {
 
           <section className="py-12 md:py-20 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="animate-slide-in-left order-2 md:order-1">
-                 <Image
-                  src="https://picsum.photos/seed/vision/600/400"
-                  alt="A person looking out over a city skyline"
-                  width={600}
-                  height={400}
-                  className="rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300"
-                  data-ai-hint="city skyline future"
-                />
+                 {aboutVisionImage && (
+                    <Image
+                      src={aboutVisionImage.imageUrl}
+                      alt={aboutVisionImage.description}
+                      width={600}
+                      height={400}
+                      className="rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300"
+                      data-ai-hint={aboutVisionImage.imageHint}
+                    />
+                 )}
             </div>
             <div className="order-1 md:order-2 animate-slide-in-right">
               <div className="flex items-center gap-4 mb-4">

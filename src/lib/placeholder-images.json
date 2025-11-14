@@ -3,8 +3,56 @@
     {
       "id": "hero-background",
       "description": "Modern apartment living room with a city view",
-      "imageUrl": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhcGFydG1lbnQlMjBpbnRlcmlvcnxlbnwwfHx8fDE3NjI5ODAzNzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/hero-background.jpg",
       "imageHint": "apartment interior"
+    },
+    {
+      "id": "about-story",
+      "description": "A beautiful, modern living room",
+      "imageUrl": "/images/about-story.jpg",
+      "imageHint": "modern living room"
+    },
+    {
+      "id": "about-vision",
+      "description": "A person looking out over a city skyline",
+      "imageUrl": "/images/about-vision.jpg",
+      "imageHint": "city skyline future"
+    },
+    {
+      "id": "testimonial-priya",
+      "description": "Avatar for Priya S.",
+      "imageUrl": "/images/testimonial-priya.jpg",
+      "imageHint": "happy woman"
+    },
+    {
+      "id": "testimonial-rohan",
+      "description": "Avatar for Rohan M.",
+      "imageUrl": "/images/testimonial-rohan.jpg",
+      "imageHint": "smiling man"
+    },
+    {
+      "id": "testimonial-anjali",
+      "description": "Avatar for Anjali K.",
+      "imageUrl": "/images/testimonial-anjali.jpg",
+      "imageHint": "professional woman"
+    },
+    {
+      "id": "testimonial-sharma",
+      "description": "Avatar for Mr. Sharma",
+      "imageUrl": "/images/testimonial-sharma.jpg",
+      "imageHint": "property owner"
+    },
+    {
+      "id": "testimonial-deepa",
+      "description": "Avatar for Deepa V.",
+      "imageUrl": "/images/testimonial-deepa.jpg",
+      "imageHint": "landlord"
+    },
+    {
+      "id": "testimonial-rajesh",
+      "description": "Avatar for Rajesh P.",
+      "imageUrl": "/images/testimonial-rajesh.jpg",
+      "imageHint": "happy landlord"
     }
   ]
 }
