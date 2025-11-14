@@ -38,10 +38,11 @@ interface City {
 }
 
 const mapBhkOrSharingToCategory = (listing: Listing): string => {
-  if (listing.listing_type === 'PG' || listing.bhk_or_sharing.includes('SHARING')) return 'PG/Hostel';
-  if (listing.bhk_or_sharing === '1BK' || listing.bhk_or_sharing === '1BHK') return '1 BHK';
-  if (listing.bhk_or_sharing === '2BHK') return '2 BHK';
-  return 'Flat/Roommate';
+    if (listing.listing_type === 'PG') return 'PG/Hostel';
+    if (listing.bhk_or_sharing.includes('SHARING')) return 'Flat/Roommate';
+    if (listing.bhk_or_sharing === '1BK' || listing.bhk_or_sharing === '1BHK') return '1 BHK';
+    if (listing.bhk_or_sharing === '2BHK') return '2 BHK';
+    return 'Flat/Roommate'; // Fallback for other types
 }
 
 const processListings = (listings: Listing[]): City[] => {
@@ -96,12 +97,21 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
     if (!searchQuery) {
       return citiesData;
     }
+    const lowercasedQuery = searchQuery.toLowerCase();
+    
+    // First, filter by city name
+    const cityMatch = citiesData.filter(city => 
+      city.name.toLowerCase().includes(lowercasedQuery)
+    );
+    if (cityMatch.length > 0) return cityMatch;
+
+    // If no city matches, filter by place name within each city
     return citiesData
       .map(city => ({
         ...city,
-        places: city.places.filter(place => place.name.toLowerCase().includes(searchQuery.toLowerCase()))
+        places: city.places.filter(place => place.name.toLowerCase().includes(lowercasedQuery))
       }))
-      .filter(city => city.name.toLowerCase().includes(searchQuery.toLowerCase()) || city.places.length > 0);
+      .filter(city => city.places.length > 0);
 
   }, [searchQuery, citiesData]);
 
@@ -158,6 +168,7 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
                               fill
                               className="object-cover transition-transform duration-300 group-hover:scale-105"
                               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 20vw, 12.5vw"
+                              unoptimized
                             />
                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                              <div className="absolute bottom-0 left-0 p-3">

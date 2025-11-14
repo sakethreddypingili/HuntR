@@ -7,6 +7,8 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
+import { useState, useMemo } from 'react';
+import { listings } from '@/lib/listings';
 
 const filterCategories = ['PG/Hostel', '1 BHK', '2 BHK', 'Flat/Roommate'];
 
@@ -17,6 +19,8 @@ interface HeroProps {
   setActiveCategory: (category: string) => void;
 }
 
+const allCities = [...new Set(listings.map(l => l.city))];
+
 export default function Hero({ 
   searchQuery, 
   setSearchQuery, 
@@ -24,12 +28,27 @@ export default function Hero({
   setActiveCategory 
 }: HeroProps) {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   const handleFilterClick = (category: string) => {
     setActiveCategory(category);
   };
   
   const gradientButtonClasses = 'bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-lg shadow-accent/30 transition-all duration-300 hover:from-accent hover:to-primary hover:shadow-primary/40 hover:-translate-y-1';
+
+  const suggestions = useMemo(() => {
+    if (!searchQuery) {
+      return allCities.slice(0, 7); // Show top cities by default
+    }
+    return allCities.filter(city => 
+      city.toLowerCase().includes(searchQuery.toLowerCase())
+    ).slice(0, 7);
+  }, [searchQuery]);
+
+  const handleSuggestionClick = (city: string) => {
+    setSearchQuery(city);
+    setShowSuggestions(false);
+  }
 
   return (
     <section className="relative flex min-h-[calc(100vh-5rem)] w-full items-center justify-center overflow-hidden">
@@ -55,7 +74,7 @@ export default function Hero({
           No fake. No spam. No Brokers. Just real homes.
         </p>
         
-        <div className="mt-10 mx-auto max-w-2xl animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+        <div className="mt-10 mx-auto max-w-2xl animate-fade-in-up relative" style={{animationDelay: '0.4s'}}>
           <div className="group flex items-center gap-2 rounded-full bg-white p-2 shadow-2xl transition-all duration-300 focus-within:scale-[1.02] focus-within:shadow-primary/30">
             <MapPin className="ml-3 h-6 w-6 shrink-0 text-primary" />
             <Input
@@ -65,8 +84,26 @@ export default function Hero({
               className="border-0 bg-transparent text-base text-gray-800 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={() => setShowSuggestions(true)}
+              onBlur={() => setTimeout(() => setShowSuggestions(false), 150)}
+              autoComplete="off"
             />
           </div>
+          {showSuggestions && suggestions.length > 0 && (
+             <div className="absolute top-full mt-2 w-full bg-white rounded-xl shadow-lg border text-left">
+               <ul className="py-2">
+                 {suggestions.map(city => (
+                    <li 
+                      key={city}
+                      className="px-4 py-2 hover:bg-primary/10 cursor-pointer text-gray-800"
+                      onClick={() => handleSuggestionClick(city)}
+                    >
+                      {city}
+                    </li>
+                 ))}
+               </ul>
+             </div>
+          )}
         </div>
 
         <div className="mt-8 flex flex-wrap justify-center gap-3 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
