@@ -94,36 +94,38 @@ export default function Hero({
           No fake. No spam. No Brokers. Just real homes.
         </p>
         
-        <form onSubmit={handleSearch} className="mt-10 mx-auto max-w-2xl animate-fade-in-up relative" style={{animationDelay: '0.4s'}}>
-          <div className="group flex items-center gap-2 rounded-full bg-white p-2 shadow-2xl transition-all duration-300 focus-within:scale-[1.02] focus-within:shadow-primary/30">
-            <MapPin className="ml-3 h-6 w-6 shrink-0 text-primary" />
-            <Input
-              id="hero-search-input"
-              type="text"
-              placeholder={`Search in a city (e.g. Bengaluru)`}
-              className="border-0 bg-transparent text-base text-gray-800 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onFocus={() => setShowSuggestions(true)}
-              onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-              autoComplete="off"
-            />
+        <form onSubmit={handleSearch} className="mt-10 mx-auto max-w-2xl animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+          <div className="relative">
+            <div className="group flex items-center gap-2 rounded-full bg-white p-2 shadow-2xl transition-all duration-300 focus-within:scale-[1.02] focus-within:shadow-primary/30">
+              <MapPin className="ml-3 h-6 w-6 shrink-0 text-primary" />
+              <Input
+                id="hero-search-input"
+                type="text"
+                placeholder={`Search in a city (e.g. Bengaluru)`}
+                className="border-0 bg-transparent text-base text-gray-800 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setShowSuggestions(true)}
+                onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+                autoComplete="off"
+              />
+            </div>
+            {showSuggestions && suggestions.length > 0 && (
+               <div className="absolute top-full mt-2 w-full bg-white rounded-xl shadow-lg border text-left z-20">
+                 <ul className="py-2">
+                   {suggestions.map(city => (
+                      <li 
+                        key={city}
+                        className="px-4 py-2 hover:bg-primary/10 cursor-pointer text-gray-800"
+                        onMouseDown={() => handleSuggestionClick(city)}
+                      >
+                        {city}
+                      </li>
+                   ))}
+                 </ul>
+               </div>
+            )}
           </div>
-          {showSuggestions && suggestions.length > 0 && (
-             <div className="absolute top-full mt-2 w-full bg-white rounded-xl shadow-lg border text-left">
-               <ul className="py-2">
-                 {suggestions.map(city => (
-                    <li 
-                      key={city}
-                      className="px-4 py-2 hover:bg-primary/10 cursor-pointer text-gray-800"
-                      onMouseDown={() => handleSuggestionClick(city)}
-                    >
-                      {city}
-                    </li>
-                 ))}
-               </ul>
-             </div>
-          )}
         
             <div className="mt-8 flex flex-wrap justify-center gap-3" style={{animationDelay: '0.6s'}}>
               {filterCategories.map((category) => {
