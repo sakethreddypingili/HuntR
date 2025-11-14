@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 
-const filterCategories = ['PG/Hostel', '1 BHK', '2 BHK'];
+const filterCategories = ['PG/Hostel', '1 BHK', '2 BHK', 'Flat/Roommate'];
 
 interface HeroProps {
   searchQuery: string;

@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -25,6 +26,7 @@ interface Place {
     'PG/Hostel': number;
     '1 BHK': number;
     '2 BHK': number;
+    'Flat/Roommate': number;
   };
 }
 
@@ -33,11 +35,11 @@ interface City {
   places: Place[];
 }
 
-const mapBhkOrSharingToCategory = (bhkOrSharing: string): string | null => {
-  if (bhkOrSharing.includes('SHARING')) return 'PG/Hostel';
-  if (bhkOrSharing === '1BK' || bhkOrSharing === '1BHK') return '1 BHK';
-  if (bhkOrSharing === '2BHK') return '2 BHK';
-  return null;
+const mapBhkOrSharingToCategory = (listing: Listing): string => {
+  if (listing.listing_type === 'PG' || listing.bhk_or_sharing.includes('SHARING')) return 'PG/Hostel';
+  if (listing.bhk_or_sharing === '1BK' || listing.bhk_or_sharing === '1BHK') return '1 BHK';
+  if (listing.bhk_or_sharing === '2BHK') return '2 BHK';
+  return 'Flat/Roommate';
 }
 
 const processListings = (listings: Listing[]): City[] => {
@@ -56,11 +58,12 @@ const processListings = (listings: Listing[]): City[] => {
           'PG/Hostel': 0,
           '1 BHK': 0,
           '2 BHK': 0,
+          'Flat/Roommate': 0,
         },
       };
     }
 
-    const category = mapBhkOrSharingToCategory(listing.bhk_or_sharing);
+    const category = mapBhkOrSharingToCategory(listing);
     if (category) {
       if (category === 'PG/Hostel') {
           citiesMap[listing.city][listing.location].propertyCounts['PG/Hostel']++;
@@ -68,6 +71,8 @@ const processListings = (listings: Listing[]): City[] => {
           citiesMap[listing.city][listing.location].propertyCounts['1 BHK']++;
       } else if (category === '2 BHK') {
           citiesMap[listing.city][listing.location].propertyCounts['2 BHK']++;
+      } else if (category === 'Flat/Roommate') {
+          citiesMap[listing.city][listing.location].propertyCounts['Flat/Roommate']++;
       }
     }
   });
@@ -106,6 +111,8 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
         return place.propertyCounts['1 BHK'];
       case '2 BHK':
         return place.propertyCounts['2 BHK'];
+      case 'Flat/Roommate':
+        return place.propertyCounts['Flat/Roommate'];
       default:
         return 0;
     }
