@@ -7,6 +7,9 @@ import { listings, Listing } from '@/lib/listings';
 import PropertyCard from '@/components/PropertyCard';
 import { notFound } from 'next/navigation';
 import PropertyFilters from '@/components/PropertyFilters';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { SlidersHorizontal } from 'lucide-react';
 
 export default function CityPage({ params }: { params: { cityName: string } }) {
   const cityName = decodeURIComponent(params.cityName);
@@ -50,32 +53,51 @@ export default function CityPage({ params }: { params: { cityName: string } }) {
 
   const capitalizedCityName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
 
+  const filterProps = {
+    priceRange,
+    setPriceRange,
+    bhkTypes,
+    setBhkTypes,
+    furnishing,
+    setFurnishing,
+    cityName: capitalizedCityName,
+  };
+
   return (
     <>
       <Navbar />
       <main className="bg-primary/5">
         <header className="bg-white py-8">
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold text-primary font-headline">
-              Properties in {capitalizedCityName}
-            </h1>
-            <p className="mt-2 text-muted-foreground">
-              Showing {filteredListings.length} of {cityListings.length} verified listings in {capitalizedCityName}.
-            </p>
+            <div className="flex justify-between items-center">
+              <div>
+                <h1 className="text-4xl font-bold text-primary font-headline">
+                  Properties in {capitalizedCityName}
+                </h1>
+                <p className="mt-2 text-muted-foreground">
+                  Showing {filteredListings.length} of {cityListings.length} verified listings in {capitalizedCityName}.
+                </p>
+              </div>
+              <div className="lg:hidden">
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <Button variant="outline" size="icon">
+                      <SlidersHorizontal className="h-5 w-5" />
+                      <span className="sr-only">Open Filters</span>
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="left" className="w-[300px] sm:w-[400px] overflow-y-auto">
+                    <PropertyFilters {...filterProps} />
+                  </SheetContent>
+                </Sheet>
+              </div>
+            </div>
           </div>
         </header>
         <div className="container mx-auto px-4 py-12">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
-                <aside className="col-span-1 lg:col-span-1">
-                    <PropertyFilters 
-                        priceRange={priceRange}
-                        setPriceRange={setPriceRange}
-                        bhkTypes={bhkTypes}
-                        setBhkTypes={setBhkTypes}
-                        furnishing={furnishing}
-                        setFurnishing={setFurnishing}
-                        cityName={capitalizedCityName}
-                    />
+                <aside className="hidden lg:block col-span-1 lg:col-span-1">
+                    <PropertyFilters {...filterProps} />
                 </aside>
                 <div className="col-span-1 lg:col-span-3">
                     {filteredListings.length > 0 ? (
