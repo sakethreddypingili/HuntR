@@ -13,6 +13,8 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { ChevronRight } from 'lucide-react';
+import { Button } from './ui/button';
+import Link from 'next/link';
 
 interface PopularPlacesProps {
   searchQuery: string;
@@ -130,6 +132,13 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
                   {activeCategory} in {city.name}
                   <ChevronRight className="h-7 w-7 text-primary ml-1" />
                 </h2>
+                {city.places.length > 10 && (
+                  <Button asChild variant="link" className="text-primary font-semibold">
+                    <Link href={`/city/${encodeURIComponent(city.name.toLowerCase())}`}>
+                      See More <ChevronRight className="h-4 w-4 ml-1" />
+                    </Link>
+                  </Button>
+                )}
               </div>
               <Carousel
                 opts={{
@@ -138,7 +147,7 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
                 className="w-full"
               >
                 <CarouselContent>
-                  {city.places.map((place, index) => (
+                  {city.places.slice(0, 10).map((place, index) => (
                     <CarouselItem key={index} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/8">
                       <Card className="overflow-hidden group border-0 shadow-lg hover:shadow-primary/20 transition-all duration-300">
                         <CardContent className="p-0">
@@ -149,7 +158,6 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
                               fill
                               className="object-cover transition-transform duration-300 group-hover:scale-105"
                               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 20vw, 12.5vw"
-                              unoptimized
                             />
                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                              <div className="absolute bottom-0 left-0 p-3">
