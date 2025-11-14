@@ -1,10 +1,15 @@
 
+'use client';
+
+import { useState, useMemo, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import { listings, Listing } from '@/lib/listings';
 import PropertyCard from '@/components/PropertyCard';
 import { notFound } from 'next/navigation';
+import PropertyFilters from '@/components/PropertyFilters';
 
-export async function generateStaticParams() {
+// This function is needed for Next.js to know which city pages to pre-render at build time.
+export function generateStaticParams() {
   const cities = [...new Set(listings.map((listing) => listing.city.toLowerCase()))];
   return cities.map((cityName) => ({
     cityName: encodeURIComponent(cityName),
@@ -13,9 +18,39 @@ export async function generateStaticParams() {
 
 export default function CityPage({ params }: { params: { cityName: string } }) {
   const cityName = decodeURIComponent(params.cityName);
-  const cityListings = listings.filter(
+  const cityListings = useMemo(() => listings.filter(
     (listing) => listing.city.toLowerCase() === cityName.toLowerCase()
-  );
+  ), [cityName]);
+
+  const [priceRange, setPriceRange] = useState([0, 50000]);
+  const [bhkTypes, setBhkTypes] = useState<string[]>([]);
+  const [furnishing, setFurnishing] = useState('any');
+  const [filteredListings, setFilteredListings] = useState<Listing[]>(cityListings);
+
+  useEffect(() => {
+    const filtered = cityListings.filter(listing => {
+      const rent = listing.rent;
+      const [minPrice, maxPrice] = priceRange;
+      if (rent < minPrice || rent > maxPrice) {
+        return false;
+      }
+
+      if (furnishing !== 'any' && listing.furnishing_status.toLowerCase().replace(/_/g, ' ') !== furnishing) {
+        return false;
+      }
+
+      if (bhkTypes.length > 0) {
+        const listingCategory = getListingCategory(listing).toLowerCase();
+        const selectedCategories = bhkTypes.map(b => b.toLowerCase());
+        if (!selectedCategories.includes(listingCategory)) {
+          return false;
+        }
+      }
+
+      return true;
+    });
+    setFilteredListings(filtered);
+  }, [cityListings, priceRange, bhkTypes, furnishing]);
 
   if (cityListings.length === 0) {
     notFound();
@@ -33,18 +68,48 @@ export default function CityPage({ params }: { params: { cityName: string } }) {
               Properties in {capitalizedCityName}
             </h1>
             <p className="mt-2 text-muted-foreground">
-              Browse all available verified listings in {capitalizedCityName}.
+              Showing {filteredListings.length} of {cityListings.length} verified listings in {capitalizedCityName}.
             </p>
           </div>
         </header>
         <div className="container mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {cityListings.map((listing) => (
-              <PropertyCard key={listing.id} listing={listing} />
-            ))}
-          </div>
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+                <aside className="col-span-1 lg:col-span-1">
+                    <PropertyFilters 
+                        priceRange={priceRange}
+                        setPriceRange={setPriceRange}
+                        bhkTypes={bhkTypes}
+                        setBhkTypes={setBhkTypes}
+                        furnishing={furnishing}
+                        setFurnishing={setFurnishing}
+                        cityName={capitalizedCityName}
+                    />
+                </aside>
+                <div className="col-span-1 lg:col-span-3">
+                    {filteredListings.length > 0 ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                            {filteredListings.map((listing) => (
+                                <PropertyCard key={listing.id} listing={listing} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="flex flex-col items-center justify-center h-full text-center bg-white p-12 rounded-lg shadow-md">
+                            <h3 className="text-2xl font-bold text-primary mb-2">No Matches Found</h3>
+                            <p className="text-muted-foreground">Try adjusting your filters to find more properties.</p>
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
       </main>
     </>
   );
+}
+
+function getListingCategory(listing: Listing): string {
+    if (listing.listing_type === 'PG') return 'PG/Hostel';
+    if (listing.bhk_or_sharing.includes('SHARING')) return 'Flat/Roommate';
+    if (listing.bhk_or_sharing === '1BK' || listing.bhk_or_sharing === '1BHK') return '1 BHK';
+    if (listing.bhk_or_sharing === '2BHK') return '2 BHK';
+    return 'Other';
 }
