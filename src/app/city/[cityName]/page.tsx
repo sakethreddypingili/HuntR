@@ -12,7 +12,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { SlidersHorizontal } from 'lucide-react';
 
 export default function CityPage({ params }: { params: { cityName: string } }) {
-  const cityName = useMemo(() => decodeURIComponent(params.cityName), [params.cityName]);
+  const cityName = decodeURIComponent(params.cityName);
   
   const cityListings = useMemo(() => listings.filter(
     (listing) => listing.city.toLowerCase() === cityName.toLowerCase()
