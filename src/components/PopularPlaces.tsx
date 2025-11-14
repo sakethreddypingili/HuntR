@@ -3,7 +3,7 @@
 
 import * as React from 'react';
 import Image from 'next/image';
-import { popularCities } from '@/lib/popular-places';
+import { popularCities, City } from '@/lib/popular-places';
 import { Card, CardContent } from '@/components/ui/card';
 import {
   Carousel,
@@ -14,16 +14,45 @@ import {
 } from '@/components/ui/carousel';
 import { ChevronRight } from 'lucide-react';
 
-export default function PopularPlaces() {
+interface PopularPlacesProps {
+  searchQuery: string;
+  activeCategory: string;
+}
+
+export default function PopularPlaces({ searchQuery, activeCategory }: PopularPlacesProps) {
+  
+  const filteredCities = React.useMemo(() => {
+    if (!searchQuery) {
+      return popularCities;
+    }
+    return popularCities.filter(city => 
+      city.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery]);
+
+  const getPropertyCountForCategory = (place: any, category: string) => {
+    switch (category) {
+      case 'PG/Hostel':
+        return place.propertyCounts.pg;
+      case '1 BHK':
+        return place.propertyCounts.oneBhk;
+      case '2 BHK':
+        return place.propertyCounts.twoBhk;
+      default:
+        return place.propertyCount;
+    }
+  };
+
+
   return (
     <section className="py-12 md:py-20 bg-primary/5">
       <div className="container mx-auto px-4">
         <div className="space-y-12">
-          {popularCities.map((city) => (
+          {filteredCities.map((city) => (
             <div key={city.name}>
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-800 font-headline flex items-center">
-                  Popular homes in {city.name}
+                  {activeCategory} in {city.name}
                   <ChevronRight className="h-7 w-7 text-primary ml-1" />
                 </h2>
               </div>
@@ -50,7 +79,7 @@ export default function PopularPlaces() {
                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                              <div className="absolute bottom-0 left-0 p-3">
                                 <h3 className="font-bold text-white text-lg">{place.name}</h3>
-                                <p className="text-sm text-gray-200">{place.propertyCount} Properties</p>
+                                <p className="text-sm text-gray-200">{getPropertyCountForCategory(place, activeCategory)} Properties</p>
                             </div>
                           </div>
                         </CardContent>
@@ -63,6 +92,11 @@ export default function PopularPlaces() {
               </Carousel>
             </div>
           ))}
+           {filteredCities.length === 0 && (
+            <div className="text-center py-10">
+              <p className="text-lg text-muted-foreground">No cities found for your search. Try another city!</p>
+            </div>
+          )}
         </div>
       </div>
     </section>

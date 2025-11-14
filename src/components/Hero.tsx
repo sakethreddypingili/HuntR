@@ -1,6 +1,6 @@
+
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 import { MapPin, Search } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -8,10 +8,21 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 
-const filterCategories = ['PG/Hostel', '1 BHK', '2 BHK', 'Flat/Roommate'];
+const filterCategories = ['PG/Hostel', '1 BHK', '2 BHK'];
 
-export default function Hero() {
-  const [activeCategory, setActiveCategory] = useState(filterCategories[0]);
+interface HeroProps {
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+  activeCategory: string;
+  setActiveCategory: (category: string) => void;
+}
+
+export default function Hero({ 
+  searchQuery, 
+  setSearchQuery, 
+  activeCategory, 
+  setActiveCategory 
+}: HeroProps) {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
 
   const handleFilterClick = (category: string) => {
@@ -50,8 +61,10 @@ export default function Hero() {
             <Input
               id="hero-search-input"
               type="text"
-              placeholder={`Search ${activeCategory} in location (e.g. Koramangala)`}
+              placeholder={`Search in a city (e.g. Bengaluru)`}
               className="border-0 bg-transparent text-base text-gray-800 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
         </div>
