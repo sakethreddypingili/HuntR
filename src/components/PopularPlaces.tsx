@@ -162,14 +162,16 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
                       <Card className="overflow-hidden group border-0 shadow-lg hover:shadow-primary/20 transition-all duration-300">
                         <CardContent className="p-0">
                           <div className="relative h-48 w-full">
-                            <Image
-                              src={place.imageUrl}
-                              alt={`Image of ${place.name}`}
-                              fill
-                              className="object-cover transition-transform duration-300 group-hover:scale-105"
-                              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 20vw, 12.5vw"
-                              unoptimized
-                            />
+                            {place.imageUrl && (
+                              <Image
+                                src={place.imageUrl}
+                                alt={`Image of ${place.name}`}
+                                fill
+                                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 20vw, 12.5vw"
+                                unoptimized
+                              />
+                            )}
                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                              <div className="absolute bottom-0 left-0 p-3">
                                 <h3 className="font-bold text-white text-lg">{place.name}</h3>
@@ -196,3 +198,5 @@ export default function PopularPlaces({ searchQuery, activeCategory }: PopularPl
     </section>
   );
 }
+
+    

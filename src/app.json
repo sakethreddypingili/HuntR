@@ -259,7 +259,7 @@
     "rent": 24511,
     "deposit": 8352,
     "furnishing_status": "FULLY_FURNISHED",
-    "main_image": "https://mathtestengine.42web.io/images/images/boston_16815543_2.jpg",
+    "main_image_url": "https://mathtestengine.42web.io/images/images/boston_16815543_2.jpg",
     "location": "Malviya Nagar",
     "city": "Delhi"
   },
@@ -1188,3 +1188,5 @@
     "city": "Kolkata"
   }
 ]
+
+    
