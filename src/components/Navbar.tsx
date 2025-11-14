@@ -16,7 +16,7 @@ export default function Navbar() {
     { href: '/', label: 'Home' },
     { href: '/how-we-verify', label: 'How We Verify' },
     { href: '/about', label: 'About Us' },
-    { href: '/for-owners', label: 'For Owners' },
+    { href: '/for-owners', label: 'For Property Owners' },
   ];
 
   const isMainLinkActive = navLinks.some((link) => (link.href === '/' && pathname === '/') || (link.href !== '/' && pathname.startsWith(link.href)));
@@ -75,7 +75,7 @@ export default function Navbar() {
             className={cn(
               'rounded-full px-5 font-semibold border-2 transition-transform duration-300',
               isSignupActive
-                ? 'bg-gradient-to-br from-blue-600 to-green-500 text-white border-yellow-400'
+                ? 'bg-gradient-to-br from-blue-600 to-green-500 text-white border-yellow-400' 
                 : isLoginActive
                 ? 'bg-black text-white border-white'
                 : 'bg-green-600 text-white border-blue-500',

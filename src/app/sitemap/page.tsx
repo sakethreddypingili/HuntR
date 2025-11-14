@@ -25,7 +25,7 @@ const sitemapLinks = [
     ],
   },
   {
-    category: 'For Owners',
+    category: 'For Property Owners',
     icon: <Building className="h-6 w-6 text-primary" />,
     links: [
       { href: '/for-owners', label: 'Why List With Us' },

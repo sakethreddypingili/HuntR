@@ -10,7 +10,7 @@ const footerSections = [
     links: [
       { label: 'About Us', href: '/about' },
       { label: 'How We Verify', href: '/how-we-verify' },
-      { label: 'For Owners', href: '/for-owners' },
+      { label: 'For Property Owners', href: '/for-owners' },
       { label: 'Careers', href: '/careers' },
       { label: 'Testimonials', href: '/testimonials' },
     ],
