@@ -3,55 +3,55 @@
     {
       "id": "hero-background",
       "description": "Modern apartment living room with a city view",
-      "imageUrl": "/hero-background.jpg",
+      "imageUrl": "/images/hero-background.jpg",
       "imageHint": "apartment interior"
     },
     {
       "id": "about-story",
       "description": "A beautiful, modern living room",
-      "imageUrl": "/about-story.jpg",
+      "imageUrl": "/images/about-story.jpg",
       "imageHint": "modern living room"
     },
     {
       "id": "about-vision",
       "description": "A person looking out over a city skyline",
-      "imageUrl": "/about-vision.jpg",
+      "imageUrl": "/images/about-vision.jpg",
       "imageHint": "city skyline future"
     },
     {
       "id": "testimonial-priya",
       "description": "Avatar for Priya S.",
-      "imageUrl": "/testimonial-priya.jpg",
+      "imageUrl": "/images/testimonial-priya.jpg",
       "imageHint": "happy woman"
     },
     {
       "id": "testimonial-rohan",
       "description": "Avatar for Rohan M.",
-      "imageUrl": "/testimonial-rohan.jpg",
+      "imageUrl": "/images/testimonial-rohan.jpg",
       "imageHint": "smiling man"
     },
     {
       "id": "testimonial-anjali",
       "description": "Avatar for Anjali K.",
-      "imageUrl": "/testimonial-anjali.jpg",
+      "imageUrl": "/images/testimonial-anjali.jpg",
       "imageHint": "professional woman"
     },
     {
       "id": "testimonial-sharma",
       "description": "Avatar for Mr. Sharma",
-      "imageUrl": "/testimonial-sharma.jpg",
+      "imageUrl": "/images/testimonial-sharma.jpg",
       "imageHint": "property owner"
     },
     {
       "id": "testimonial-deepa",
       "description": "Avatar for Deepa V.",
-      "imageUrl": "/testimonial-deepa.jpg",
+      "imageUrl": "/images/testimonial-deepa.jpg",
       "imageHint": "landlord"
     },
     {
       "id": "testimonial-rajesh",
       "description": "Avatar for Rajesh P.",
-      "imageUrl": "/testimonial-rajesh.jpg",
+      "imageUrl": "/images/testimonial-rajesh.jpg",
       "imageHint": "happy landlord"
     }
   ]

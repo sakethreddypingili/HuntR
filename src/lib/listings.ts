@@ -1,5 +1,5 @@
 
-import listingsData from '@/app.json';
+import listingsData from '@/data/app.json';
 
 export interface Listing {
   id: number;
